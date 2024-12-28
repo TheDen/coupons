@@ -54,14 +54,22 @@
         { "code": "HOT10" },
         { "code": "10OFF" },
         { "code": "20OFF" },
+        { "code": "30OFF" },
+        { "code": "5OFF" },
+        { "code": "50OFF" },
+        { "code": "15OFF" },
+        { "code": "25OFF" },
         { "code": "SORRY10" },
         { "code": "SORRY15" },
         { "code": "SORRY20" },
+        { "code": "SORRY5" },
+        { "code": "SORRY25" },
         { "code": "MOBILE10" },
         { "code": "MOBILE20" },
         { "code": "MOBILE30" },
         { "code": "DISCOUNT35" },
         { "code": "SAVE40" },
+        { "code": "SAVE5" },
         { "code": "PROMO25" },
         { "code": "EXTRA25" },
         { "code": "SUPER20" },
@@ -70,11 +78,12 @@
         { "code": "TAKE25" },
         { "code": "GET25" },
         { "code": "GET30" },
-        { "code": "SORRY25" },
+        { "code": "BEST5" },
         { "code": "BEST20" },
         { "code": "ULTRA50" },
         { "code": "FINAL40" },
-        { "code": "BOOST30" }
+        { "code": "BOOST30" },
+        { "code": "SMALL5" }
       ]
     },
     {
@@ -148,7 +157,9 @@
         { "code": "CUSTOMERCARE10" },
         { "code": "SATISFIEDCUSTOMER15" },
         { "code": "FEEDBACK5" },
-        { "code": "LOYALTYCARE20" }
+        { "code": "LOYALTYCARE20" },
+        { "code": "LOYAL5" },
+        { "code": "LOYAL10" }
       ]
     },
     {
@@ -178,7 +189,12 @@
         { "code": "FLAT200" },
         { "code": "SAVE75" },
         { "code": "FLAT300" },
-        { "code": "FLAT400" }
+        { "code": "FLAT400" },
+        { "code": "SAVE5" },
+        { "code": "FLAT5" },
+        { "code": "FLAT50" },
+        { "code": "FLAT15" },
+        { "code": "TAKE5" }
       ]
     },
     {
@@ -264,6 +280,61 @@
         { "code": "SANDBOX50" },
         { "code": "TESTUSER10" },
         { "code": "TEST" }
+      ]
+    },
+    {
+      "title": "Event-Specific Discounts",
+      "coupons": [
+        { "code": "BLACKFRIDAY50" },
+        { "code": "CYBERMONDAY30" },
+        { "code": "VALENTINE20" },
+        { "code": "MOTHERSDAY15" },
+        { "code": "FATHERSDAY10" },
+        { "code": "HALLOWEEN25" },
+        { "code": "EID20" },
+        { "code": "DIWALI30" },
+        { "code": "CHRISTMAS50" },
+        { "code": "NEWYEAR25" }
+      ]
+    },
+    {
+      "title": "Bulk Purchase Discounts",
+      "coupons": [
+        { "code": "BULKBUY10" },
+        { "code": "WHOLESALE20" },
+        { "code": "BULK25" },
+        { "code": "STOCKUP15" },
+        { "code": "BUYMORE30" },
+        { "code": "LARGEBUY40" }
+      ]
+    },
+    {
+      "title": "Time-Limited Discounts",
+      "coupons": [
+        { "code": "FLASH15" },
+        { "code": "HOURDEAL10" },
+        { "code": "TIMELIMIT20" },
+        { "code": "TODAYONLY25" },
+        { "code": "LASTCHANCE30" }
+      ]
+    },
+    {
+      "title": "First Purchase Discounts",
+      "coupons": [
+        { "code": "FIRSTBUY10" },
+        { "code": "NEWFIRST15" },
+        { "code": "FIRSTPURCHASE20" },
+        { "code": "TRYUS30" }
+      ]
+    },
+    {
+      "title": "Subscription Discounts",
+      "coupons": [
+        { "code": "SUBSCRIBE10" },
+        { "code": "MONTHLY20" },
+        { "code": "YEARLY25" },
+        { "code": "PLAN30" },
+        { "code": "MEMBER50" }
       ]
     }
   ]
