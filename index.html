@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Common Coupon Codes</title>
+    <style>
+      body {
+        font-family: "Helvetica";
+        background-color: black;
+        color: #ffffff;
+        text-align: center;
+      }
+
+      .container {
+        padding: 20px;
+        background: black;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+      }
+
+      h1 {
+        color: #096;
+      }
+
+      h2 {
+        color: black;
+        margin-top: 20px;
+        text-align: center;
+        background: #096;
+        display: inline-block;
+        padding: 0.5em 1em;
+      }
+
+      .instructions {
+        font-size: 14px;
+        color: #7a7a7a;
+        margin-bottom: 20px;
+      }
+
+      .category {
+        margin-bottom: 20px;
+      }
+
+      .coupons-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .coupon {
+        flex: 1 1 calc(25% - 10px);
+        max-width: calc(25% - 10px);
+        min-width: 120px;
+        position: relative;
+        text-align: center;
+        padding: 10px;
+        background: black;
+        color: #096;
+        font-weight: bold;
+        border: 1px solid #096;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .coupon:hover {
+        color: black;
+        background-color: #096;
+      }
+
+      .coupon.clicked {
+        background: black;
+        color: grey;
+        border-color: #7a7a7a;
+        cursor: not-allowed;
+      }
+
+      .copied-message {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: #096;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        pointer-events: none;
+        display: none;
+      }
+
+      .coupon.clicked .copied-message {
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .coupon {
+          flex: 1 1 calc(50% - 10px);
+          max-width: calc(50% - 10px);
+          font-size: 1em;
+        }
+
+        .instructions {
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .coupon {
+          flex: 1 1 100%;
+          max-width: 100%;
+          font-size: 1em;
+          padding: 10px;
+        }
+
+        .instructions {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Common Coupon Codes</h1>
+      <p class="instructions">
+        Click/Tap on any coupon code below to copy it to your clipboard.
+      </p>
+      <div id="coupons-container"></div>
+    </div>
+
+    <script>
+      function handleCouponClick(element, text) {
+        if (element.classList.contains("clicked")) return;
+
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            element.classList.add("clicked");
+            const copiedMessage = element.querySelector(".copied-message");
+            copiedMessage.style.display = "block";
+            setTimeout(() => (copiedMessage.style.display = "none"), 800);
+          })
+          .catch((err) => console.error("Failed to copy:", err));
+      }
+
+      function renderCoupons(data) {
+        const container = document.getElementById("coupons-container");
+
+        data.categories.forEach((category) => {
+          const section = document.createElement("div");
+          section.className = "category";
+          section.innerHTML = `<h2>${category.title}</h2>`;
+
+          const row = document.createElement("div");
+          row.className = "coupons-row";
+
+          category.coupons.forEach((coupon) => {
+            const couponDiv = document.createElement("div");
+            couponDiv.className = "coupon";
+            couponDiv.onclick = () => handleCouponClick(couponDiv, coupon.code);
+            couponDiv.innerHTML = `
+            ${coupon.code}
+            <span class="copied-message">Copied to clipboard!</span>
+          `;
+            row.appendChild(couponDiv);
+          });
+
+          section.appendChild(row);
+          container.appendChild(section);
+        });
+      }
+
+      fetch("./coupons.json")
+        .then((response) => response.json())
+        .then((data) => renderCoupons(data))
+        .catch((err) => console.error("Failed to load coupons:", err));
+    </script>
+  </body>
+</html>
